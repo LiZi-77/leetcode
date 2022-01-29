@@ -38,3 +38,29 @@ class Solution:
             
             index_list.remove((i,j))
             value_list.remove(min(value_list))
+  
+# binary search
+class Solution:
+    def kthSmallest(self, matrix: List[List[int]], k: int) -> int:
+        m = len(matrix)
+        n = len(matrix[0])
+        
+        lo, hi = matrix[0][0], matrix[m-1][n-1]
+        
+        while (lo <= hi):
+            mid = int((hi - lo) /2 + lo)
+            cnt = 0
+            for i in range(m):
+                for j in range(n):
+                    if matrix[i][j] <= mid:
+                        cnt += 1
+                    else:
+                        break
+            if cnt < k:
+                lo = mid + 1
+            else:
+                hi = mid - 1
+        return lo
+             
+        
+                    
